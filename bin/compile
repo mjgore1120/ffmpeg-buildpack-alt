@@ -14,7 +14,11 @@ FFMPEG_BINARIES="https://drive.google.com/uc?export=download&id=1pdY1D7ZOBM-wla4
 
 echo "download done, executing curl command"
 
-curl -L $FFMPEG_BINARIES | tar xJ -C $BUILD_DIR
+echo "-----> Creating directory for FFmpeg"
+mkdir -p /app/vendor/ffmpeg
+
+echo "-----> Downloading and extracting FFmpeg binaries"
+curl -L $FFMPEG_BINARIES | tar xJ -C /app/vendor/ffmpeg
 
 echo "-----> FFmpeg installation done"
 

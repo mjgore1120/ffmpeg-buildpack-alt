@@ -4,21 +4,26 @@ echo "-----> Starting custom build ffmpeg"
 
 BUILD_DIR=$1
 
-echo "-----> BUILD_DIR is: $BUILD_DIR, downloading binaries"
+FFMPEG_BINARIES="https://drive.google.com/u/1/uc?id=1T2azfYXl2hU60t0WmYVx-mpb3tEd_mRz&export=download"
 
+echo "-----> Install ffmpeg"
 
-# Here, you can either download a precompiled FFmpeg binary or compile it from source.
-# For simplicity, we'll download a precompiled static binary.
-
-FFMPEG_BINARIES="https://drive.google.com/uc?export=download&id=1pdY1D7ZOBM-wla4fgsgEXaB5KGZYGPm_"
-
-echo "download done, executing curl command"
-
-echo "-----> Creating directory for FFmpeg"
+echo "-----> Creating /app/vendor/ffmpeg directory"
 mkdir -p /app/vendor/ffmpeg
 
-echo "-----> Downloading and extracting FFmpeg binaries"
+if [ -d "/app/vendor/ffmpeg" ]; then
+    echo "-----> Successfully created /app/vendor/ffmpeg"
+else
+    echo "-----> ERROR: Failed to create /app/vendor/ffmpeg"
+fi
+
+echo "-----> Downloading and extracting ffmpeg binaries"
 curl -L $FFMPEG_BINARIES | tar xJ -C /app/vendor/ffmpeg
 
-echo "-----> FFmpeg installation done"
+if [ -f "/app/vendor/ffmpeg/ffmpeg" ]; then
+    echo "-----> ffmpeg binary is present in /app/vendor/ffmpeg"
+else
+    echo "-----> ERROR: ffmpeg binary not found in /app/vendor/ffmpeg"
+fi
 
+echo "-----> ffmpeg installation done"

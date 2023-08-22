@@ -4,7 +4,7 @@ echo "-----> Starting custom build ffmpeg"
 
 BUILD_DIR=$1
 
-FFMPEG_BINARIES="https://drive.google.com/u/1/uc?id=1T2azfYXl2hU60t0WmYVx-mpb3tEd_mRz&export=download"
+FFMPEG_BINARIES="https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz"
 
 echo "-----> Install ffmpeg"
 
